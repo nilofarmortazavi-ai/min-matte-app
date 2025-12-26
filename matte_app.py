@@ -5,7 +5,8 @@ import json
 
 # --- SETUP ---
 st.set_page_config(page_title="Ma 1-5 Expert", layout="wide")
-client = OpenAI(api_key="DIN_API_NYCKEL")
+# Ändra denna rad i din matte_app.py på GitHub:
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 # --- SYMPY-MOTORN ---
 def execute_math(python_code):
@@ -81,4 +82,5 @@ if st.button("Lös med full precision"):
             
             # Visa koden som användes (valfritt, bra för transparens)
             with st.expander("Se den tekniska beräkningen"):
+
                 st.code(f"# SymPy-kod som kördes:\n{generated_code}\n\n# Resultat:\n{exact_answer}")
